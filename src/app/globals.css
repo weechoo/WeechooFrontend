@@ -3,16 +3,27 @@
 
 @custom-variant dark (&:is(.dark *));
 
+html {
+  background-color: #fafafa;
+}
+
 @theme {
-  --color-neutral-100: #e1e1e1;
-  --color-neutral-500: #617677;
-  --color-secondary-100: #d4e3ef;
-  --color-seconday-500: #3b3c43;
-  --color-tertiary-300: #9699a3;
-  --color-primary-light: #ff3300;
-  --color-priamry-deep: #c12700;
-  --font-bebas: var(--font-bebas-neue);
-  --font-poppins: var(--font-poppins);
+  --color-neutral-50: #d1d5dc;
+  --color-primary-100: #f97316;
+  --color-neutral-100: #737373;
+  --color-neutral-200: #0a0a0a;
+  --color-neutral-300: #271406;
+
+  --gradient-primary-100: linear-gradient(90deg, #f97316 0%, #ef4444 100%);
+
+  --gradient-secondary-100: linear-gradient(
+    90deg,
+    #ef4444 0%,
+    #f97316 50%,
+    #fbbf24 100%
+  );
+
+  --font-satoshi: var(--font-satoshi);
 }
 
 @theme inline {
