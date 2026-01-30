@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import { TextProps } from "@/types/texts";
 
+// subtitle text across app
+
 export const SubHeading = ({ children, className }: TextProps) => {
   return (
     <div

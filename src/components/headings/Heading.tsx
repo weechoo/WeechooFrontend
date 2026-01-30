@@ -1,6 +1,8 @@
 import { cn } from "@/lib/utils";
 import { TextProps } from "@/types/texts";
 
+// title text across app
+
 export const Heading = ({ children, className }: TextProps) => {
   return (
     <div

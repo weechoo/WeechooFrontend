@@ -3,8 +3,6 @@
 import { AuthButton } from "@/components/auth/AuthButton";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { AuthError } from "@/components/auth/AuthError";
-import { AuthHeader } from "@/components/auth/AuthHeader";
-import { AppLogo } from "@/components/common/AppLogo";
 import { Heading } from "@/components/headings/Heading";
 import { SubHeading } from "@/components/headings/SubHeading";
 import { AuthLayout } from "@/components/layouts/AuthLayout";
@@ -29,7 +27,7 @@ const PasswordPage = () => {
 
   async function onSubmit() {
     await new Promise((r) => setTimeout(r, 1200));
-    // simulate OTP required
+    // simulate OTP; replace later
   }
 
   return (

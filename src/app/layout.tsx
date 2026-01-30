@@ -31,6 +31,8 @@ const satoshi = localFont({
   display: "swap",
 });
 
+// add SEO later
+
 export const metadata: Metadata = {
   title: "Wee Choo",
   description: "Corporate Meals Platform for Africa",
