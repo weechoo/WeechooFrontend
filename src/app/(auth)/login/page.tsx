@@ -25,14 +25,14 @@ const LoginPage = () => {
   } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      role: "WEECHOO_ADMIN", // <-- set default here
+      role: "WEECHOO_ADMIN", // default
     },
   });
 
   async function onSubmit(data: LoginForm) {
     console.log(data);
     await new Promise((r) => setTimeout(r, 1200));
-    // simulate success & redirect
+    // simulate success & redirect; replace later
   }
 
   return (

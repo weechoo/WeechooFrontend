@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { TextProps } from "@/types/texts";
 
+// card subtext
 export const CardText = ({ children, className }: TextProps) => {
   return (
     <div
