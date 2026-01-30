@@ -1,3 +1,4 @@
+import { Divide } from "lucide-react";
 import React from "react";
 
 export function OTPInput({ length = 6 }: { length?: number }) {
@@ -15,18 +16,27 @@ export function OTPInput({ length = 6 }: { length?: number }) {
   }
 
   return (
-    <div className="flex gap-2">
-      {values.map((val, i) => (
-        <input
-          key={i}
-          id={`otp-${i}`}
-          value={val}
-          onChange={(e) => handleChange(i, e.target.value)}
-          maxLength={1}
-          className="w-12 h-12  px-3 text-center border rounded-md text-lg"
-          placeholder="-"
-        />
-      ))}
+    <div className="flex flex-col gap-2">
+      <label
+        className="text-sm text-neutral-200 font-medium"
+        htmlFor="otp-input"
+      >
+        Verification Code
+      </label>
+      <div className="flex gap-2">
+        {values.map((val, i) => (
+          <input
+            name="otp-input"
+            key={i}
+            id={`otp-${i}`}
+            value={val}
+            onChange={(e) => handleChange(i, e.target.value)}
+            maxLength={1}
+            className="w-12 h-12  px-3 text-center border rounded-md text-lg"
+            placeholder="-"
+          />
+        ))}
+      </div>
     </div>
   );
 }

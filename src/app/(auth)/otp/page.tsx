@@ -25,10 +25,11 @@ const OtpPage = () => {
   return (
     <AuthLayout>
       <AuthCard>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center mb-8">
           <Heading>Verify it&apos;s You!</Heading>
           <SubHeading>Enter OTP code sent to your E-mail</SubHeading>
         </div>
+
         <OTPInput />
         {error && <AuthError message="Invalid verification code" />}
         <AuthButton loading={loading} onClick={handleVerify}>

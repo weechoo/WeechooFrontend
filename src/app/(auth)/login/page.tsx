@@ -47,7 +47,7 @@ const LoginPage = () => {
             <label className="text-sm">Role</label>
             <select
               {...register("role")}
-              className="w-full mt-1 h-10 border rounded-md px-3 cursor-pointer"
+              className="w-full mt-1 p-3 md:p-4 text-primary-200 border rounded-md px-3 cursor-pointer"
             >
               <option value="WEECHOO_ADMIN">Admin</option>
               <option value="COMPANY_ADMIN">Company Admin</option>
@@ -62,7 +62,7 @@ const LoginPage = () => {
             <input
               {...register("email")}
               type="email"
-              className="w-full mt-1 h-10 border rounded-md px-3"
+              className="w-full mt-1 p-3 md:p-4 border placeholder:text-neutral-200 rounded-md"
               placeholder="you@example.com"
             />
             {errors.email && <AuthError message={errors.email.message!} />}

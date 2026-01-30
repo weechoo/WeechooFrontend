@@ -36,16 +36,18 @@ const PasswordPage = () => {
     <AuthLayout>
       <AuthCard>
         <div className="flex flex-col items-center justify-center">
-          <Heading>Enter Your Password</Heading>
-          <SubHeading>Authentication stage</SubHeading>
+          <Heading>Security access</Heading>
+          <SubHeading>Enter your password</SubHeading>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="text-sm">Password</label>
+            <label className="text-sm font-medium text-neutral-200">
+              Password
+            </label>
             <input
               {...register("password")}
               type="password"
-              className="w-full mt-1 h-10 border rounded-md px-3"
+              className="w-full mt-1 p-3 md:p-4 border rounded-md px-3 placeholder:text-neutral-200"
               placeholder="************"
             />
             {errors.password && (
