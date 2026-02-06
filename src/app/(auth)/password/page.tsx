@@ -9,6 +9,11 @@ import { AuthLayout } from "@/components/layouts/AuthLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { apiRequest } from "@/lib/api";
+import { LoginResponse } from "@/types/auth";
+import { useAuth } from "@/hooks/useAuth";
+import { useRouter } from "next/navigation";
+import { getDashboardRoute } from "@/lib/roleDirect";
 
 const passwordSchema = z.object({
   password: z.string().min(6, "Password is required"),
@@ -25,9 +30,31 @@ const PasswordPage = () => {
     resolver: zodResolver(passwordSchema),
   });
 
-  async function onSubmit() {
-    await new Promise((r) => setTimeout(r, 1200));
-    // simulate OTP; replace later
+  const { email, loginSuccess } = useAuth();
+  const router = useRouter();
+
+  async function onSubmit(data: PasswordForm) {
+    if (!email) {
+      throw new Error("Email missing");
+    }
+
+    try {
+      const res = await apiRequest<LoginResponse>("/auth/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password: data.password,
+        }),
+      });
+
+      loginSuccess(res.token, res.role);
+
+      const dashboardRoute = getDashboardRoute(res.role);
+      router.push(dashboardRoute);
+    } catch (err: any) {
+      console.error(err.message);
+      // hook this to <AuthError /> later
+    }
   }
 
   return (

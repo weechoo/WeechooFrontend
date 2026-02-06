@@ -9,6 +9,8 @@ import { AuthError } from "@/components/auth/AuthError";
 import { AuthButton } from "@/components/auth/AuthButton";
 import { Heading } from "@/components/headings/Heading";
 import { SubHeading } from "@/components/headings/SubHeading";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
 
 const loginSchema = z.object({
   role: z.string().min(1, "Select a role"),
@@ -29,10 +31,12 @@ const LoginPage = () => {
     },
   });
 
+  const router = useRouter();
+  const { setEmail } = useAuth();
+
   async function onSubmit(data: LoginForm) {
-    console.log(data);
-    await new Promise((r) => setTimeout(r, 1200));
-    // simulate success & redirect; replace later
+    setEmail(data.email);
+    router.push("/password");
   }
 
   return (
