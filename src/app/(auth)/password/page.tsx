@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { AuthButton } from "@/components/auth/AuthButton";
 import { AuthCard } from "@/components/auth/AuthCard";
 import { AuthError } from "@/components/auth/AuthError";
@@ -14,6 +15,7 @@ import { LoginResponse } from "@/types/auth";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { getDashboardRoute } from "@/lib/roleDirect";
+import ErrorState from "@/components/common/ErrorState";
 
 const passwordSchema = z.object({
   password: z.string().min(6, "Password is required"),
@@ -22,6 +24,8 @@ const passwordSchema = z.object({
 type PasswordForm = z.infer<typeof passwordSchema>;
 
 const PasswordPage = () => {
+  const [error, setError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -53,7 +57,7 @@ const PasswordPage = () => {
       router.push(dashboardRoute);
     } catch (err) {
       console.error((err as Error).message);
-      // hook to <AuthError /> later
+      setError("Invalid email or password. Please try again.");
     }
   }
 
@@ -64,6 +68,7 @@ const PasswordPage = () => {
           <Heading>Security access</Heading>
           <SubHeading>Enter your password</SubHeading>
         </div>
+        {error && <ErrorState message={error} onRetry={() => setError(null)} />}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="text-sm font-medium text-neutral-200">
