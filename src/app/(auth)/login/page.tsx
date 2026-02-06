@@ -27,7 +27,7 @@ const LoginPage = () => {
   } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      role: "WEECHOO_ADMIN", // default
+      role: "WEECHOO_ADMIN",
     },
   });
 
@@ -46,6 +46,7 @@ const LoginPage = () => {
           <Heading>Welcome to Weechoo</Heading>
           <SubHeading>Corporate meals platform for Africa</SubHeading>
         </div>
+
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="text-sm">Role</label>
