@@ -1,16 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { UserRole } from "@/types/auth";
-
-interface AuthContextType {
-  email: string | null;
-  token: string | null;
-  role: UserRole | null;
-  setEmail: (email: string) => void;
-  loginSuccess: (token: string, role: UserRole) => void;
-  logout: () => void;
-}
+import { AuthContextType, UserRole } from "@/types/auth";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

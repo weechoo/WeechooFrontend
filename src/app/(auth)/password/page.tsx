@@ -51,9 +51,9 @@ const PasswordPage = () => {
 
       const dashboardRoute = getDashboardRoute(res.role);
       router.push(dashboardRoute);
-    } catch (err: any) {
-      console.error(err.message);
-      // hook this to <AuthError /> later
+    } catch (err) {
+      console.error((err as Error).message);
+      // hook to <AuthError /> later
     }
   }
 

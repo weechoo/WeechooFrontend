@@ -1,3 +1,7 @@
 export default function WeechooAdminDashboard() {
-  return <h1>Vendor Dashboard</h1>;
+  return (
+    <h1 className="text-3xl flex items-center justify-center font-extrabold">
+      Vendor Dashboard
+    </h1>
+  );
 }
