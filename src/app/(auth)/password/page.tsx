@@ -9,13 +9,12 @@ import { SubHeading } from "@/components/headings/SubHeading";
 import { AuthLayout } from "@/components/layouts/AuthLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import z from "zod";
+import { z } from "zod";
 import { apiRequest } from "@/lib/api";
 import { LoginResponse } from "@/types/auth";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { getDashboardRoute } from "@/lib/roleDirect";
-import ErrorState from "@/components/common/ErrorState";
 
 const passwordSchema = z.object({
   password: z.string().min(6, "Password is required"),
@@ -24,7 +23,7 @@ const passwordSchema = z.object({
 type PasswordForm = z.infer<typeof passwordSchema>;
 
 const PasswordPage = () => {
-  const [error, setError] = useState<string | null>(null);
+  const [authError, setAuthError] = useState<string | null>(null);
 
   const {
     register,
@@ -38,11 +37,11 @@ const PasswordPage = () => {
   const router = useRouter();
 
   async function onSubmit(data: PasswordForm) {
-    if (!email) {
-      throw new Error("Email missing");
-    }
+    if (!email) return;
 
     try {
+      setAuthError(null);
+
       const res = await apiRequest<LoginResponse>("/auth/login", {
         method: "POST",
         body: JSON.stringify({
@@ -52,12 +51,9 @@ const PasswordPage = () => {
       });
 
       loginSuccess(res.token, res.role);
-
-      const dashboardRoute = getDashboardRoute(res.role);
-      router.push(dashboardRoute);
-    } catch (err) {
-      console.error((err as Error).message);
-      setError("Invalid email or password. Please try again.");
+      router.push(getDashboardRoute(res.role));
+    } catch {
+      setAuthError("Invalid email or password. Please try again.");
     }
   }
 
@@ -68,7 +64,9 @@ const PasswordPage = () => {
           <Heading>Security access</Heading>
           <SubHeading>Enter your password</SubHeading>
         </div>
-        {error && <ErrorState message={error} onRetry={() => setError(null)} />}
+
+        {authError && <AuthError message={authError} />}
+
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="text-sm font-medium text-neutral-200">
