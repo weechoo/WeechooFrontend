@@ -1,6 +1,6 @@
 "use client";
 
-import { Building2, Users, Store, Truck } from "lucide-react";
+import { Building2, Users, ChefHat, Salad } from "lucide-react";
 import { StatCard } from "../components/dashboard/StatCard";
 import { OrdersToFulfill } from "../components/dashboard/OrdersToFulfill";
 import { VendorsPieChart } from "../components/dashboard/VendorsPieChart";
@@ -9,10 +9,12 @@ import { RecentActivity } from "../components/dashboard/RecentActivity";
 
 export default function WeechooAdminDashboard() {
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-2xl font-bold">Dashboard Overview</h1>
-        <p className="text-muted-foreground">
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-2xl font-bold text-neutral-black">
+          Dashboard Overview
+        </h1>
+        <p className="text-neutral-100 text-sm font-normal">
           Welcome back! Here&apos;s what&apos;s happening with Weechoo today
         </p>
       </div>
@@ -34,13 +36,13 @@ export default function WeechooAdminDashboard() {
         <StatCard
           title="Active Vendors"
           value="10"
-          icon={Store}
+          icon={ChefHat}
           percentage="+4%"
         />
         <StatCard
           title="Delivering Today"
           value="264"
-          icon={Truck}
+          icon={Salad}
           percentage="+12%"
         />
       </div>

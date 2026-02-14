@@ -32,7 +32,9 @@ export const Sidebar = () => {
         <div className="h-8 border-l border-[#DFDFDF]" />
 
         <div className="flex flex-col gap-2 whitespace-nowrap">
-          <h2 className="font-bold text-base leading-[100%]">Weechoo Admin</h2>
+          <h2 className="font-bold text-base leading-[100%] text-neutral-black">
+            Weechoo Admin
+          </h2>
           <p className="text-xs leading-none font-normal text-[#6A7282]">
             System Dashboard
           </p>

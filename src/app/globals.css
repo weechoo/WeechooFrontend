@@ -21,7 +21,8 @@ html {
   --color-primary-100: #f97316;
   --color-neutral-100: #737373;
   --color-neutral-200: #0a0a0a;
-  --color-neutral-300: #271406;
+  /* --color-neutral-300: #271406; */
+  --color-neutral-black: #271406;
   --color-slate-200: #e2e8f0;
   --color-gray-100: #737b8b;
   --color-gray-700: #4a5565;
