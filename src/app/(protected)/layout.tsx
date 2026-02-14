@@ -9,12 +9,13 @@ export default function ProtectedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen bg-neutral-50">
+    <div className="flex h-screen font-satoshi">
       <Sidebar />
-
-      <div className="flex flex-col flex-1 overflow-hidden">
+      <div className="flex md:ml-64 flex-col flex-1 overflow-hidden">
         <TopNavbar />
-        <main className="flex-1 overflow-y-auto p-6">{children}</main>
+        <main className="flex-1  overflow-y-auto p-6 bg-[#FAFAFA] border-[0.8px] border-slate-200">
+          {children}
+        </main>
       </div>
     </div>
   );
