@@ -3,7 +3,7 @@
 import { chartData } from "@/constants/placeholder";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
-const COLORS = ["#F97316", "#FB923C", "#FDBA74", "#EA580C"];
+const COLORS = ["#F97316", "#54433A", "#FDCD8E", "#8D5C3F"];
 
 export function VendorsPieChart() {
   return (

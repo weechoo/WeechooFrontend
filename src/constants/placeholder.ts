@@ -1,6 +1,8 @@
 // orders to fulfill
 
-export const orders = [
+import { Order } from "@/types/menu";
+
+export const orders: Order[] = [
   {
     name: "Jollof & Chicken Stew",
     orders: 245,
