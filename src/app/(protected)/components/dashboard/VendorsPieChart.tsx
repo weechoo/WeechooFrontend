@@ -5,24 +5,93 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 const COLORS = ["#F97316", "#54433A", "#FDCD8E", "#8D5C3F"];
 
+const wrapText = (name: string) => {
+  if (name.includes(" ")) {
+    const words = name.split(" ");
+    if (words.length > 2) {
+      const firstLine = words.slice(0, 2).join(" ");
+      const secondLine = words.slice(2).join(" ");
+      return [firstLine, secondLine];
+    } else if (words.length === 2) {
+      return [words[0], words[1]];
+    }
+  }
+
+  return [name];
+};
+
 export function VendorsPieChart() {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm">
-      <h3 className="font-semibold mb-4">Top Performing Vendors</h3>
+    <div className="bg-white p-3 rounded-2xl shadow-sm h-full">
+      <h3 className="font-semibold mb-1">Top Performing Vendors</h3>
 
-      <ResponsiveContainer width="100%" height={250}>
+      <div className="text-xs text-neutral-500 mb-4">
+        Based on number of Orders
+      </div>
+
+      <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Tooltip />
           <Pie
             data={chartData}
             dataKey="value"
-            outerRadius={90}
-            label={({ name, percent }) =>
-              `${name} ${(percent * 100).toFixed(0)}%`
-            }
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={60}
+            labelLine={false}
+            label={({
+              name,
+              percent,
+              cx,
+              cy,
+              midAngle,
+
+              outerRadius,
+            }) => {
+              // calculate position for label
+              const radius = outerRadius + 30;
+              const x = cx + radius * Math.cos((-midAngle * Math.PI) / 180);
+              const y = cy + radius * Math.sin((-midAngle * Math.PI) / 180);
+
+              const textAnchor = x > cx ? "start" : "end";
+              const percentage = `${(percent * 100).toFixed(0)}%`;
+              const nameLines = wrapText(name as string);
+
+              return (
+                <g>
+                  {/* percentage on top */}
+                  <text
+                    x={x}
+                    y={y - (nameLines.length > 1 ? 12 : 8)}
+                    fill="#374151"
+                    textAnchor={textAnchor}
+                    dominantBaseline="bottom"
+                    className="text-[10px] font-bold"
+                  >
+                    {percentage}
+                  </text>
+
+                  {/* name lines below */}
+                  {nameLines.map((line, index) => (
+                    <text
+                      key={index}
+                      x={x}
+                      y={y + index * 16 - (nameLines.length > 1 ? 4 : 0)}
+                      fill="#374151"
+                      textAnchor={textAnchor}
+                      dominantBaseline="top"
+                      className="text-[10px] font-medium"
+                    >
+                      {line}
+                    </text>
+                  ))}
+                </g>
+              );
+            }}
           >
             {chartData.map((entry, index) => (
-              <Cell key={index} fill={COLORS[index]} />
+              <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
         </PieChart>

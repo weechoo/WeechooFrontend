@@ -19,6 +19,7 @@ html {
 @theme {
   --color-neutral-50: #d1d5dc;
   --color-primary-100: #f97316;
+  --color-secondary-100: #7e2a0c;
   --color-neutral-100: #737373;
   --color-neutral-200: #0a0a0a;
   /* --color-neutral-300: #271406; */

@@ -1,7 +1,6 @@
-// orders to fulfill
-
 import { Order } from "@/types/menu";
 
+// orders
 export const orders: Order[] = [
   {
     name: "Jollof & Chicken Stew",
@@ -23,8 +22,8 @@ export const orders: Order[] = [
 // vendor pie chart share
 
 export const chartData = [
+  { name: "Eduanepa Corner", value: 30 },
   { name: "African Delight", value: 35 },
-  { name: "EduanePa Corner", value: 30 },
   { name: "AJ's Kitchen", value: 20 },
   { name: "Coastal Delights", value: 15 },
 ];

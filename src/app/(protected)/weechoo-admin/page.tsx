@@ -47,16 +47,29 @@ export default function WeechooAdminDashboard() {
         />
       </div>
 
-      {/* Middle Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 space-y-6">
-          <OrdersToFulfill />
+      {/* Main Content Area */}
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
+        {/* Left Column - Takes 9/12 on xl screens (75%) */}
+        <div className="xl:col-span-9 flex flex-col gap-6">
+          {/* Top Row: Orders + Pie Chart */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+            <div className="lg:col-span-3">
+              <OrdersToFulfill />
+            </div>
+            <div className="lg:col-span-2">
+              <VendorsPieChart />
+            </div>
+          </div>
+
+          {/* Bottom Row: Recent Activity */}
           <RecentActivity />
         </div>
 
-        <div className="space-y-6">
-          <VendorsPieChart />
-          <ActiveCompanies />
+        {/* Right Column - Takes 3/12 on xl screens (25%) */}
+        <div className="xl:col-span-3">
+          <div className="h-full">
+            <ActiveCompanies />
+          </div>
         </div>
       </div>
     </div>
