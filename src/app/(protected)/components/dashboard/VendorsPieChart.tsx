@@ -3,7 +3,7 @@
 import { chartData } from "@/constants/placeholder";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
-const COLORS = ["#F97316", "#54433A", "#FDCD8E", "#8D5C3F"];
+const COLORS = ["#FDCD8E", "#54433A", "#F97316", "#8D5C3F"];
 
 const wrapText = (name: string) => {
   if (name.includes(" ")) {
@@ -40,14 +40,15 @@ export function VendorsPieChart() {
             cy="50%"
             outerRadius={60}
             labelLine={false}
+            paddingAngle={0}
+            cornerRadius={5}
             label={({
               name,
-              percent,
-              cx,
-              cy,
-              midAngle,
-
-              outerRadius,
+              percent = 0,
+              cx = 0,
+              cy = 0,
+              midAngle = 0,
+              outerRadius = 0,
             }) => {
               // calculate position for label
               const radius = outerRadius + 30;
@@ -66,7 +67,7 @@ export function VendorsPieChart() {
                     y={y - (nameLines.length > 1 ? 12 : 8)}
                     fill="#374151"
                     textAnchor={textAnchor}
-                    dominantBaseline="bottom"
+                    dominantBaseline="text-after-edge"
                     className="text-[10px] font-bold"
                   >
                     {percentage}
@@ -80,7 +81,7 @@ export function VendorsPieChart() {
                       y={y + index * 16 - (nameLines.length > 1 ? 4 : 0)}
                       fill="#374151"
                       textAnchor={textAnchor}
-                      dominantBaseline="top"
+                      dominantBaseline="text-before-edge"
                       className="text-[10px] font-medium"
                     >
                       {line}
@@ -91,7 +92,11 @@ export function VendorsPieChart() {
             }}
           >
             {chartData.map((entry, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} />
+              <Cell
+                key={index}
+                fill={COLORS[index % COLORS.length]}
+                stroke="none"
+              />
             ))}
           </Pie>
         </PieChart>

@@ -19,7 +19,6 @@ export default function WeechooAdminDashboard() {
         </p>
       </div>
 
-      {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         <StatCard
           title="Active Companies"
@@ -47,11 +46,9 @@ export default function WeechooAdminDashboard() {
         />
       </div>
 
-      {/* Main Content Area */}
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
-        {/* Left Column - Takes 9/12 on xl screens (75%) */}
+        {/* left - 9/12 on xl screens (75%) */}
         <div className="xl:col-span-9 flex flex-col gap-6">
-          {/* Top Row: Orders + Pie Chart */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             <div className="lg:col-span-3">
               <OrdersToFulfill />
@@ -61,11 +58,10 @@ export default function WeechooAdminDashboard() {
             </div>
           </div>
 
-          {/* Bottom Row: Recent Activity */}
           <RecentActivity />
         </div>
 
-        {/* Right Column - Takes 3/12 on xl screens (25%) */}
+        {/* right 3/12 on xl screens (25%) */}
         <div className="xl:col-span-3">
           <div className="h-full">
             <ActiveCompanies />

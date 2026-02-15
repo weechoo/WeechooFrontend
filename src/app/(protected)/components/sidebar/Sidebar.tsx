@@ -53,16 +53,16 @@ export const Sidebar = () => {
           <SidebarItem icon={ShoppingCart} label="Orders" />
           <SidebarItem icon={ChefHat} label="Vendors" />
           <SidebarItem icon={FileText} label="Invoices" />
+        </div>
 
-          <div className="p-5.75 flex flex-col gap-2">
-            <h3 className="leading-[100%] font-bold text-xs tracking-tighter text-gray-100">
-              ACCOUNT
-            </h3>
+        <div className="p-5.75 flex flex-col gap-2">
+          <h3 className="leading-[100%] font-bold text-xs tracking-tighter text-gray-100">
+            ACCOUNT
+          </h3>
 
-            <SidebarItem icon={BarChart3} label="Analytics" />
-            <SidebarItem icon={Settings} label="Settings" />
-            <SidebarItem icon={HelpCircle} label="Help & Support" />
-          </div>
+          <SidebarItem icon={BarChart3} label="Analytics" />
+          <SidebarItem icon={Settings} label="Settings" />
+          <SidebarItem icon={HelpCircle} label="Help & Support" />
         </div>
       </div>
     </aside>

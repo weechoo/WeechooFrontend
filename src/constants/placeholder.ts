@@ -19,13 +19,13 @@ export const orders: Order[] = [
   },
 ];
 
-// vendor pie chart share
+// vendor pie chart
 
 export const chartData = [
-  { name: "Eduanepa Corner", value: 30 },
-  { name: "African Delight", value: 35 },
-  { name: "AJ's Kitchen", value: 20 },
   { name: "Coastal Delights", value: 15 },
+  { name: "AJ's Kitchen", value: 20 },
+  { name: "African Delight", value: 35 },
+  { name: "Eduanepa Corner", value: 30 },
 ];
 
 // active companies

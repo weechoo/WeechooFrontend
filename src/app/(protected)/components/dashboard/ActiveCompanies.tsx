@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export function ActiveCompanies() {
   return (
-    <Card className="p-6 rounded-2xl border border-[#FFC9C9] bg-linear-to-r from-[#FEF2F2] to-[#FFF7ED] h-full flex flex-col">
+    <Card className="px-6 py-10 rounded-2xl border border-[#FFC9C9] bg-linear-to-r from-[#FEF2F2] to-[#FFF7ED] h-full flex flex-col">
       <div className="flex flex-col gap-1">
         <h3 className="font-bold text-neutral-900">Active Companies</h3>
         <p className="text-neutral-500 text-xs">

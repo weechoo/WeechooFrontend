@@ -15,6 +15,7 @@ import { LoginResponse } from "@/types/auth";
 import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { getDashboardRoute } from "@/lib/roleDirect";
+import { toast } from "sonner";
 
 const passwordSchema = z.object({
   password: z.string().min(6, "Password is required"),
@@ -52,6 +53,13 @@ const PasswordPage = () => {
 
       loginSuccess(res.token, res.role);
       router.push(getDashboardRoute(res.role));
+
+      toast.success("Login successful", {
+        duration: 1500,
+        onAutoClose: () => {
+          router.push(getDashboardRoute(res.role));
+        },
+      });
     } catch {
       setAuthError("Invalid email or password. Please try again.");
     }
