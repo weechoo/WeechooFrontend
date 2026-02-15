@@ -7,12 +7,26 @@ html {
   background-color: #fafafa;
 }
 
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @theme {
   --color-neutral-50: #d1d5dc;
   --color-primary-100: #f97316;
+  --color-secondary-100: #7e2a0c;
   --color-neutral-100: #737373;
   --color-neutral-200: #0a0a0a;
-  --color-neutral-300: #271406;
+  /* --color-neutral-300: #271406; */
+  --color-neutral-black: #271406;
+  --color-slate-200: #e2e8f0;
+  --color-gray-100: #737b8b;
+  --color-gray-700: #4a5565;
 
   --gradient-primary-100: linear-gradient(90deg, #f97316 0%, #ef4444 100%);
 

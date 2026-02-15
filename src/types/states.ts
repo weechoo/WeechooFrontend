@@ -6,7 +6,7 @@ export type EmptyStateProps = {
 
 export type LoaderProps = {
   size?: "sm" | "md" | "lg";
-  colorClass?: string; // for button/other usage if needed
+  colorClass?: string;
 };
 
 export type ErrorStateProps = {
