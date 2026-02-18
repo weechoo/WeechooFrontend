@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from "@/components/ui/sonner";
+import { RouteGuard } from "@/components/RouteGuard";
 
 // satoshi
 
@@ -33,7 +34,7 @@ const satoshi = localFont({
   display: "swap",
 });
 
-// add SEO later
+// add SEO ???
 
 export const metadata: Metadata = {
   title: "Wee Choo",
@@ -48,8 +49,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${satoshi.variable} antialiased`}>
-        <AuthProvider>{children}</AuthProvider>
-        <Toaster />
+        <AuthProvider>
+          <RouteGuard>
+            {children}
+            <Toaster />
+          </RouteGuard>
+        </AuthProvider>
       </body>
     </html>
   );

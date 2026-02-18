@@ -27,7 +27,7 @@ const LoginPage = () => {
   } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      role: "WEECHOO_ADMIN",
+      role: "WeechooAdmin",
     },
   });
 
@@ -54,10 +54,10 @@ const LoginPage = () => {
               {...register("role")}
               className="w-full mt-1 p-3 md:p-4 text-primary-200 border rounded-md px-3 cursor-pointer"
             >
-              <option value="WEECHOO_ADMIN">Admin</option>
-              <option value="COMPANY_ADMIN">Company Admin</option>
-              <option value="EMPLOYEE">Staff</option>
-              <option value="VENDOR">Vendor</option>
+              <option value="WeechooAdmin">Admin</option>
+              <option value="CompanyAdmin">Company Admin</option>{" "}
+              <option value="Employee">Staff</option>
+              <option value="Vendor">Vendor</option>
             </select>
             {errors.role && <AuthError message={errors.role.message!} />}
           </div>
