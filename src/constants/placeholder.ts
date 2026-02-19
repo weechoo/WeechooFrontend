@@ -1,4 +1,5 @@
 import { Order } from "@/types/menu";
+import { Building2, ChefHat, Salad, Users } from "lucide-react";
 
 // orders
 export const orders: Order[] = [
@@ -71,5 +72,143 @@ export const activities = [
   {
     text: "Orders consolidated for the day",
     time: "15:34 GMT · 13th October 2025",
+  },
+];
+
+// COMPANY STATS
+export const companyStats = [
+  {
+    title: "Active Companies",
+    value: "07",
+    trend: {
+      value: "+12%",
+      direction: "up" as const,
+      period: "vs last month",
+    },
+  },
+  {
+    title: "Total Employees",
+    value: "3,467",
+    trend: {
+      value: "+12%",
+      direction: "up" as const,
+      period: "vs last month",
+    },
+  },
+  {
+    title: "This Week",
+    value: "562",
+    subtitle: "orders",
+    trend: {
+      value: "+12%",
+      direction: "up" as const,
+      period: "vs last week",
+    },
+  },
+  {
+    title: "Expense",
+    value: "GHS 25,789.00",
+    trend: { value: "+12%", direction: "up" as const, period: "this month" },
+  },
+];
+
+// DASHBOARD STATS
+export const dashboardStats = [
+  {
+    title: "Active Companies",
+    value: "07",
+    icon: Building2,
+    trend: { value: "+12%", direction: "up" as const },
+  },
+  {
+    title: "Total Employees",
+    value: "2,349",
+    icon: Users,
+    trend: { value: "+4%", direction: "up" as const },
+  },
+  {
+    title: "Active Vendors",
+    value: "10",
+    icon: ChefHat,
+    trend: { value: "+4%", direction: "up" as const },
+  },
+  {
+    title: "Delivering Today",
+    value: "264",
+    icon: Salad,
+    trend: { value: "+12%", direction: "up" as const },
+  },
+];
+
+export const allCompanies = [
+  {
+    id: 1,
+    company: "TechHub Lagos",
+    hrAdmin: "John Doe",
+    email: "john@techhub.com",
+    onboarded: "17/10/2025",
+    employees: 180,
+    totalOrders: 45,
+    status: "Active",
+  },
+  {
+    id: 2,
+    company: "Fintech Solutions",
+    hrAdmin: "Jane Smith",
+    email: "jane@fintech.com",
+    onboarded: "17/10/2025",
+    employees: 248,
+    totalOrders: 45,
+    status: "Active",
+  },
+  {
+    id: 3,
+    company: "E-commerce Plus",
+    hrAdmin: "David Brown",
+    email: "david@ecommerce.com",
+    onboarded: "17/10/2025",
+    employees: 180,
+    totalOrders: 45,
+    status: "Inactive",
+  },
+  {
+    id: 4,
+    company: "Creative Agency",
+    hrAdmin: "Mike Johnson",
+    email: "mike@creative.com",
+    onboarded: "17/10/2025",
+    employees: 180,
+    totalOrders: 45,
+    status: "Active",
+  },
+  {
+    id: 5,
+    company: "DataCorp Africa",
+    hrAdmin: "Sarah Williams",
+    email: "sarah@datacorp.com",
+    onboarded: "17/10/2025",
+    employees: 180,
+    totalOrders: 45,
+    status: "Active",
+  },
+  {
+    id: 6,
+    company: "E-commerce Plus",
+    hrAdmin: "David Brown",
+    email: "david@ecommerce.com",
+    onboarded: "17/10/2025",
+    employees: 180,
+    totalOrders: 45,
+    status: "Active",
+  },
+  {
+    id: 7,
+    company: "Fintech Solutions",
+    hrAdmin: "Jane Smith",
+    email: "jane@fintech.com",
+    onboarded: "17/10/2025",
+    employees: 248,
+    totalOrders: 45,
+    status: "Active",
   },
 ];

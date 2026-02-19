@@ -1,4 +1,3 @@
-import { Divide } from "lucide-react";
 import React from "react";
 
 export function OTPInput({ length = 6 }: { length?: number }) {

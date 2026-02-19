@@ -13,7 +13,7 @@ export default function ProtectedLayout({
       <Sidebar />
       <div className="flex md:ml-64 flex-col flex-1 overflow-hidden">
         <TopNavbar />
-        <main className="flex-1  overflow-y-auto p-6 bg-[#FAFAFA] border-[0.8px] border-slate-200">
+        <main className="flex-1 overflow-y-auto p-6 bg-[#FAFAFA] border-[0.8px] border-slate-200">
           {children}
         </main>
       </div>

@@ -16,6 +16,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { getDashboardRoute } from "@/lib/roleDirect";
 import { toast } from "sonner";
+import { ApiRequestError } from "@/lib/errors";
 
 const passwordSchema = z.object({
   password: z.string().min(6, "Password is required"),
@@ -37,9 +38,13 @@ const PasswordPage = () => {
   const { email, loginSuccess } = useAuth();
   const router = useRouter();
 
-  async function onSubmit(data: PasswordForm) {
-    if (!email) return;
+  // redirect to login if no email
+  if (!email) {
+    router.push("/login");
+    return null;
+  }
 
+  async function onSubmit(data: PasswordForm) {
     try {
       setAuthError(null);
 
@@ -51,17 +56,28 @@ const PasswordPage = () => {
         }),
       });
 
-      loginSuccess(res.token, res.role);
-      router.push(getDashboardRoute(res.role));
+      await loginSuccess(res.token, res.role);
 
-      toast.success("Login successful", {
-        duration: 1500,
-        onAutoClose: () => {
-          router.push(getDashboardRoute(res.role));
-        },
-      });
-    } catch {
-      setAuthError("Invalid email or password. Please try again.");
+      toast.success("Login successful!");
+
+      const dashboardRoute = getDashboardRoute(res.role);
+      router.push(dashboardRoute);
+    } catch (error) {
+      if (error instanceof ApiRequestError) {
+        if (error.status === 401) {
+          setAuthError("Invalid email or password. Please try again.");
+        } else if (error.status === 429) {
+          setAuthError("Too many attempts. Please try again later.");
+        } else if (error.status && error.status >= 500) {
+          setAuthError("Server error. Please try again later.");
+        } else {
+          setAuthError(error.message);
+        }
+      } else if (error instanceof Error) {
+        setAuthError(error.message);
+      } else {
+        setAuthError("An unexpected error occurred. Please try again.");
+      }
     }
   }
 

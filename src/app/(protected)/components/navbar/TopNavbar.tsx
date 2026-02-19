@@ -3,25 +3,42 @@
 import { Bell, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { LogoutButton } from "@/components/auth/Logout";
 import { useAuth } from "@/hooks/useAuth";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function TopNavbar() {
-  const { logout } = useAuth();
-  const router = useRouter();
+  const { role, isLoading } = useAuth();
 
-  const handleLogout = () => {
-    logout();
-
-    toast.success("Logged out", {
-      description: "Redirecting to login...",
-      duration: 1500,
-      onAutoClose: () => {
-        router.push("/login");
-      },
-    });
+  const getInitials = () => {
+    switch (role) {
+      case "WeechooAdmin":
+        return "AD";
+      case "CompanyAdmin":
+        return "CA";
+      case "Employee":
+        return "EM";
+      case "Vendor":
+        return "VN";
+      default:
+        return "AD";
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="h-16 bg-white border-b px-4 md:px-6 flex items-center justify-between">
+        <Skeleton className="h-9 w-48" />
+        <div className="flex items-center gap-5 md:gap-7 ml-4">
+          <Skeleton className="h-5 w-5 rounded-full" />
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-8 w-8 rounded-full" />
+            <Skeleton className="h-8 w-16" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="h-16 bg-white border-b px-4 md:px-6 flex items-center justify-between">
@@ -41,15 +58,10 @@ export function TopNavbar() {
         <div className="flex items-center gap-2">
           <Avatar>
             <AvatarFallback className="bg-primary-100 text-white text-sm font-bold">
-              AD
+              {getInitials()}
             </AvatarFallback>
           </Avatar>
-          <button
-            onClick={handleLogout}
-            className="hidden sm:block cursor-pointer hover:bg-orange-50 text-sm font-medium text-gray-700"
-          >
-            Logout
-          </button>
+          <LogoutButton />
         </div>
       </div>
     </div>
