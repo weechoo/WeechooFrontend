@@ -1,7 +1,11 @@
-export default function WeechooAdminDashboard() {
+import CompaniesTable from "../components/companies/CompaniesTable";
+import CompanyStats from "../components/companies/CompanyStats";
+
+export default function CompanyAdminDashboard() {
   return (
-    <h1 className="text-3xl flex items-center justify-center font-extrabold">
-      Company Admin Dashboard
-    </h1>
+    <>
+      <CompanyStats />
+      <CompaniesTable />
+    </>
   );
 }

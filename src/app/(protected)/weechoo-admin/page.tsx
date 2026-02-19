@@ -4,7 +4,7 @@ import { OrdersToFulfill } from "../components/dashboard/OrdersToFulfill";
 import { VendorsPieChart } from "../components/dashboard/VendorsPieChart";
 import { ActiveCompanies } from "../components/dashboard/ActiveCompanies";
 import { RecentActivity } from "../components/dashboard/RecentActivity";
-import StartCards from "../components/dashboard/StartCards";
+import { DashboardStats } from "../components/dashboard/DashboardStats";
 
 export default function WeechooAdminDashboard() {
   return (
@@ -18,7 +18,7 @@ export default function WeechooAdminDashboard() {
         </p>
       </div>
       {/* stat cards */}
-      <StartCards />
+      <DashboardStats />
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
         {/* left - 9/12 on xl screens (75%) */}
         <div className="xl:col-span-9 flex flex-col gap-6">
