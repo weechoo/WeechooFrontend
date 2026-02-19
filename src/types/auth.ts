@@ -5,7 +5,7 @@ export type LoginResponse = {
   role: UserRole;
 };
 
-// error types
+// Error types
 export type ApiError = {
   message: string;
   status?: number;

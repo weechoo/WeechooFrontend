@@ -1,7 +1,11 @@
-export default function WeechooAdminDashboard() {
+export default function CompanyAdminDashboard() {
   return (
-    <h1 className="text-3xl flex items-center justify-center font-extrabold">
-      Employee Dashboard
-    </h1>
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-2xl font-bold text-neutral-black">
+          Welcome to Employee Dashboard
+        </h1>
+      </div>
+    </div>
   );
 }
