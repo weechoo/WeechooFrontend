@@ -1,13 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import CompaniesTable from "../../components/companies/CompaniesTable";
-import CompanyStats from "../../components/companies/CompanyStats";
-import AddCompanyModal from "@/components/modals/AddCompanyModal";
+import CompaniesTable from "../../components/companies/companies-table";
+import CompanyStats from "../../components/companies/company-stats";
+import AddCompanyModal from "@/components/modals/add-company-modal";
+import EmptyState from "@/components/common/empty-state";
+import Loader from "@/components/common/loader";
+import { allCompanies } from "@/constants/dashboard";
 
 export default function CompaniesPage() {
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [companies] = useState(allCompanies);
+
+  // Simulate loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-100">
+        <Loader size="lg" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6">
@@ -27,8 +49,17 @@ export default function CompaniesPage() {
         </Button>
       </div>
 
-      <CompanyStats />
-      <CompaniesTable />
+      {companies && companies.length > 0 ? (
+        <>
+          <CompanyStats />
+          <CompaniesTable />
+        </>
+      ) : (
+        <EmptyState
+          title="No companies found"
+          description="You haven't added any companies yet. Get started by adding your first company."
+        />
+      )}
 
       <AddCompanyModal open={open} onOpenChange={setOpen} />
     </div>

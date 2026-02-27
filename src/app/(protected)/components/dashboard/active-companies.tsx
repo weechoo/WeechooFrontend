@@ -1,8 +1,8 @@
 import { Card } from "@/components/ui/card";
-import { companies } from "@/constants/placeholder";
+import { companies } from "@/constants/dashboard";
 import { ArrowRight } from "lucide-react";
 
-export function ActiveCompanies() {
+export const ActiveCompanies = () => {
   return (
     <Card className="px-6 py-10 rounded-2xl border border-[#FFC9C9] bg-linear-to-r from-[#FEF2F2] to-[#FFF7ED] h-full flex flex-col">
       <div className="flex flex-col gap-1">
@@ -51,4 +51,4 @@ export function ActiveCompanies() {
       </div>
     </Card>
   );
-}
+};

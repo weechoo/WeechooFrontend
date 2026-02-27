@@ -2,7 +2,8 @@ export type UserRole = "WeechooAdmin" | "CompanyAdmin" | "Employee" | "Vendor";
 
 export type LoginResponse = {
   token: string;
-  role: UserRole;
+  // backend may return a single role or an array; normalize when used
+  role: UserRole | UserRole[];
 };
 
 // Error types

@@ -1,10 +1,8 @@
-// app/(protected)/weechoo-admin/page.tsx
-
-import { ActiveCompanies } from "../components/dashboard/ActiveCompanies";
-import DashboardStats from "../components/dashboard/DashboardStats";
-import { OrdersToFulfill } from "../components/dashboard/OrdersToFulfill";
-import { RecentActivity } from "../components/dashboard/RecentActivity";
-import { VendorsPieChart } from "../components/dashboard/VendorsPieChart";
+import { ActiveCompanies } from "../components/dashboard/active-companies";
+import DashboardStats from "../components/dashboard/dashboard-stats";
+import { OrdersToFulfill } from "../components/dashboard/orders-to-fulfill";
+import { RecentActivity } from "../components/dashboard/recent-activity";
+import { VendorsPieChart } from "../components/dashboard/vendors-pie-chart";
 
 export default function WeechooAdminDashboard() {
   return (

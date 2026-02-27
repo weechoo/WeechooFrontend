@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
-import { activities } from "@/constants/placeholder";
+import { activities } from "@/constants/dashboard";
 
-export function RecentActivity() {
+export const RecentActivity = () => {
   return (
     <Card className="p-6 flex flex-col gap-2 rounded-2xl shadow-none border-[0.8px] border-[#E2E8F0]">
       <h3 className="text-neutral-black font-bold">Recent Activity</h3>
@@ -20,4 +20,4 @@ export function RecentActivity() {
       </div>
     </Card>
   );
-}
+};

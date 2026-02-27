@@ -1,9 +1,9 @@
 import { Card } from "@/components/ui/card";
-import { StatusBadge } from "./StatusBadge";
-import { orders } from "@/constants/placeholder";
+import { StatusBadge } from "./status-badge";
+import { orders } from "@/constants/dashboard";
 import { Soup } from "lucide-react";
 
-export function OrdersToFulfill() {
+export const OrdersToFulfill = () => {
   return (
     <Card className="p-6 rounded-2xl border-[0.6px] border-[#E2E8F0] shadow-none">
       <div className="flex flex-col gap-1">
@@ -49,4 +49,4 @@ export function OrdersToFulfill() {
       </div>
     </Card>
   );
-}
+};
