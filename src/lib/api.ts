@@ -18,7 +18,7 @@ export async function apiRequest<T>(
     const data = await res.json();
 
     if (!res.ok) {
-      // Throw custom error with status
+      // throw custom error with status
       throw new ApiRequestError(
         data.message || "Request failed",
         res.status,
@@ -31,7 +31,7 @@ export async function apiRequest<T>(
     if (error instanceof ApiRequestError) {
       throw error;
     }
-    // Re-throw as ApiRequestError for consistency
+    // re-throw as ApiRequestError for consistency
     throw new ApiRequestError(
       error instanceof Error ? error.message : "Network error occurred",
     );

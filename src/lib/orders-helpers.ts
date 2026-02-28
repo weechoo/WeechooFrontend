@@ -1,5 +1,7 @@
 import { WeekOrders } from "@/types/orders";
 
+// format date range
+
 export function formatDateRange(week: WeekOrders): string {
   const start = new Date(week.startDate);
   const end = new Date(week.endDate);
@@ -10,6 +12,8 @@ export function formatDateRange(week: WeekOrders): string {
   return `${month} ${start.getDate()}–${end.getDate()}, ${year}`;
 }
 
+// format week option
+
 export function formatWeekOption(week: WeekOrders): string {
   const start = new Date(week.startDate);
   const end = new Date(week.endDate);
@@ -19,6 +23,7 @@ export function formatWeekOption(week: WeekOrders): string {
   return `Week ${week.weekNumber} - ${shortMonth} ${start.getDate()}–${end.getDate()}, ${week.year}`;
 }
 
+// calc total orders
 export function calculateTotalOrders(week: WeekOrders): number {
   return week.days.reduce((total, day) => {
     return (
@@ -35,6 +40,8 @@ export function calculateTotalOrders(week: WeekOrders): number {
   }, 0);
 }
 
+// calc total value
+
 export function calculateTotalValue(week: WeekOrders): number {
   return week.days.reduce((total, day) => {
     return (
@@ -49,6 +56,7 @@ export function calculateTotalValue(week: WeekOrders): number {
   }, 0);
 }
 
+// calc active vendors
 export function calculateActiveVendors(week: WeekOrders): number {
   const vendors = new Set<string>();
 

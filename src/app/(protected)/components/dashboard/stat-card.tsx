@@ -3,6 +3,7 @@ import { LucideIcon, TrendingUp, TrendingDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // reusable
+
 // base card container
 const StatCardRoot = ({
   children,
@@ -18,7 +19,7 @@ const StatCardRoot = ({
         className,
       )}
     >
-      <CardContent className="flex flex-col gap-1 px-6">{children}</CardContent>
+      <CardContent className="flex flex-col gap-1 px-8">{children}</CardContent>
     </Card>
   );
 };

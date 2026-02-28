@@ -19,13 +19,30 @@ export const ordersData: WeekOrders[] = [
             vendorName: "Chef's Kitchen",
             pricePerUnit: 25,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 30 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 45,
+                quantity: 10,
               },
-              { companyId: "c3", companyName: "Creative Agency", quantity: 15 },
+              { companyId: "c3", companyName: "Creative Agency", quantity: 10 },
+            ],
+          },
+
+          {
+            id: "meal-2",
+            mealName: "Fried Rice & Fish",
+            vendorId: "vendor-2",
+            vendorName: "AccraEats Kitchen",
+            pricePerUnit: 30,
+            companyOrders: [
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
+              {
+                companyId: "c2",
+                companyName: "Fintech Solutions",
+                quantity: 10,
+              },
+              { companyId: "c4", companyName: "Media House", quantity: 10 },
             ],
           },
         ],
@@ -35,19 +52,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Tuesday",
         meals: [
           {
-            id: "meal-2",
+            id: "meal-3",
             mealName: "Fried Rice & Fish",
             vendorId: "vendor-2",
             vendorName: "AccraEats Kitchen",
             pricePerUnit: 30,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 30 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 45,
+                quantity: 10,
               },
-              { companyId: "c3", companyName: "Creative Agency", quantity: 15 },
+              { companyId: "c3", companyName: "Creative Agency", quantity: 10 },
             ],
           },
         ],
@@ -57,19 +74,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Wednesday",
         meals: [
           {
-            id: "meal-3",
+            id: "meal-4",
             mealName: "Banku with Tilapia",
             vendorId: "vendor-3",
             vendorName: "Ghana Delights",
             pricePerUnit: 35,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 25 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 35,
+                quantity: 10,
               },
-              { companyId: "c4", companyName: "Media House", quantity: 20 },
+              { companyId: "c4", companyName: "Media House", quantity: 10 },
             ],
           },
         ],
@@ -79,19 +96,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Thursday",
         meals: [
           {
-            id: "meal-4",
+            id: "meal-5",
             mealName: "Waakye with Egg",
             vendorId: "vendor-1",
             vendorName: "Chef's Kitchen",
             pricePerUnit: 20,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 40 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 50,
+                quantity: 10,
               },
-              { companyId: "c3", companyName: "Creative Agency", quantity: 25 },
+              { companyId: "c3", companyName: "Creative Agency", quantity: 10 },
             ],
           },
         ],
@@ -101,19 +118,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Friday",
         meals: [
           {
-            id: "meal-5",
+            id: "meal-6",
             mealName: "Fufu with Goat Soup",
             vendorId: "vendor-3",
             vendorName: "Ghana Delights",
             pricePerUnit: 40,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 20 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 30,
+                quantity: 10,
               },
-              { companyId: "c4", companyName: "Media House", quantity: 15 },
+              { companyId: "c4", companyName: "Media House", quantity: 10 },
             ],
           },
         ],
@@ -132,33 +149,33 @@ export const ordersData: WeekOrders[] = [
         dayName: "Monday",
         meals: [
           {
-            id: "meal-6",
+            id: "meal-7",
             mealName: "Jollof Rice with Chicken",
             vendorId: "vendor-1",
             vendorName: "Chef's Kitchen",
             pricePerUnit: 25,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 35 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 50,
+                quantity: 10,
               },
-              { companyId: "c3", companyName: "Creative Agency", quantity: 20 },
+              { companyId: "c3", companyName: "Creative Agency", quantity: 10 },
             ],
           },
           {
-            id: "meal-7",
+            id: "meal-8",
             mealName: "Fried Rice & Fish",
             vendorId: "vendor-2",
             vendorName: "AccraEats Kitchen",
             pricePerUnit: 30,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 25 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 35,
+                quantity: 10,
               },
             ],
           },
@@ -174,14 +191,14 @@ export const ordersData: WeekOrders[] = [
         dayName: "Wednesday",
         meals: [
           {
-            id: "meal-8",
+            id: "meal-9",
             mealName: "Banku with Tilapia",
             vendorId: "vendor-3",
             vendorName: "Ghana Delights",
             pricePerUnit: 35,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 30 },
-              { companyId: "c4", companyName: "Media House", quantity: 25 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
+              { companyId: "c4", companyName: "Media House", quantity: 10 },
             ],
           },
         ],
@@ -196,19 +213,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Friday",
         meals: [
           {
-            id: "meal-9",
+            id: "meal-10",
             mealName: "Waakye with Egg",
             vendorId: "vendor-1",
             vendorName: "Chef's Kitchen",
             pricePerUnit: 20,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 45 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 55,
+                quantity: 10,
               },
-              { companyId: "c3", companyName: "Creative Agency", quantity: 30 },
+              { companyId: "c3", companyName: "Creative Agency", quantity: 10 },
             ],
           },
         ],
@@ -227,19 +244,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Monday",
         meals: [
           {
-            id: "meal-10",
+            id: "meal-11",
             mealName: "Jollof Rice with Chicken",
             vendorId: "vendor-1",
             vendorName: "Chef's Kitchen",
             pricePerUnit: 25,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 40 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 60,
+                quantity: 10,
               },
-              { companyId: "c3", companyName: "Creative Agency", quantity: 25 },
+              { companyId: "c3", companyName: "Creative Agency", quantity: 10 },
             ],
           },
         ],
@@ -249,19 +266,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Tuesday",
         meals: [
           {
-            id: "meal-11",
+            id: "meal-12",
             mealName: "Fried Rice & Fish",
             vendorId: "vendor-2",
             vendorName: "AccraEats Kitchen",
             pricePerUnit: 30,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 35 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 45,
+                quantity: 10,
               },
-              { companyId: "c4", companyName: "Media House", quantity: 30 },
+              { companyId: "c4", companyName: "Media House", quantity: 10 },
             ],
           },
         ],
@@ -271,17 +288,17 @@ export const ordersData: WeekOrders[] = [
         dayName: "Wednesday",
         meals: [
           {
-            id: "meal-12",
+            id: "meal-13",
             mealName: "Fufu with Goat Soup",
             vendorId: "vendor-3",
             vendorName: "Ghana Delights",
             pricePerUnit: 40,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 20 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 30,
+                quantity: 10,
               },
             ],
           },
@@ -297,19 +314,19 @@ export const ordersData: WeekOrders[] = [
         dayName: "Friday",
         meals: [
           {
-            id: "meal-13",
+            id: "meal-14",
             mealName: "Banku with Tilapia",
             vendorId: "vendor-3",
             vendorName: "Ghana Delights",
-            pricePerUnit: 35,
+            pricePerUnit: 15,
             companyOrders: [
-              { companyId: "c1", companyName: "TechHub Lagos", quantity: 30 },
+              { companyId: "c1", companyName: "TechHub Lagos", quantity: 10 },
               {
                 companyId: "c2",
                 companyName: "Fintech Solutions",
-                quantity: 40,
+                quantity: 10,
               },
-              { companyId: "c3", companyName: "Creative Agency", quantity: 20 },
+              { companyId: "c3", companyName: "Creative Agency", quantity: 10 },
             ],
           },
         ],

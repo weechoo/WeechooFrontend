@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return null;
   });
 
-  // previously stored selected role, no longer used
+  // previously stored selected role, NO LONGER USED
 
   const [isLoading, setIsLoading] = useState(false);
 

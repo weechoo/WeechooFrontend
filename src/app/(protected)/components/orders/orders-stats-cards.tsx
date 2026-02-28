@@ -11,35 +11,67 @@ interface StatsCardsProps {
 
 export const OrdersStatsCards = ({ stats }: StatsCardsProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      {/* Total Orders Card */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
       <StatCard.Root>
-        <StatCard.Title className="mb-5">Total Orders</StatCard.Title>
-        <StatCard.Value className="mb-4">{stats.totalOrders}</StatCard.Value>
-        <StatCard.Trend value="+12%" direction="up" period="vs last week" />
+        <div className="h-full flex flex-col">
+          <div className="min-h-12">
+            <StatCard.Title>Total Orders</StatCard.Title>
+          </div>
+          <div className="min-h-14 flex items-center">
+            <StatCard.Value>{stats.totalOrders}</StatCard.Value>
+          </div>
+          <div className="min-h-10 flex items-end">
+            <StatCard.Trend value="+12%" direction="up" period="vs last week" />
+          </div>
+        </div>
       </StatCard.Root>
 
-      {/* Total Value Card */}
       <StatCard.Root>
-        <StatCard.Title className="mb-5">Total Value</StatCard.Title>
-        <StatCard.Value className="mb-4">
-          GHS {stats.totalValue.toFixed(2)}
-        </StatCard.Value>
-        <StatCard.Trend value="+12%" direction="up" period="vs last week" />
+        <div className="h-full flex flex-col">
+          <div className="min-h-12">
+            <StatCard.Title>Total Value</StatCard.Title>
+          </div>
+          <div className="min-h-14 flex items-center">
+            <StatCard.Value className="text-base md:text-lg lg:text-2xl">
+              GHS {stats.totalValue.toFixed(2)}
+            </StatCard.Value>
+          </div>
+          <div className="min-h-10 flex items-end">
+            <StatCard.Trend value="+12%" direction="up" period="vs last week" />
+          </div>
+        </div>
       </StatCard.Root>
 
-      {/* Order Rate Card */}
       <StatCard.Root>
-        <StatCard.Title className="mb-5">Order Rate</StatCard.Title>
-        <StatCard.Value className="mb-4">{stats.orderRate}%</StatCard.Value>
-        <StatCard.Subtitle>of all employees</StatCard.Subtitle>
+        <div className="h-full flex flex-col">
+          <div className="min-h-12">
+            <StatCard.Title>Order Rate</StatCard.Title>
+          </div>
+          <div className="min-h-14 flex items-center">
+            <StatCard.Value className="text-base md:text-lg lg:text-2xl">
+              {stats.orderRate}%
+            </StatCard.Value>
+          </div>
+          <div className="min-h-10 flex items-end">
+            <StatCard.Subtitle>of all employees</StatCard.Subtitle>
+          </div>
+        </div>
       </StatCard.Root>
 
-      {/* Active Vendors Card */}
       <StatCard.Root>
-        <StatCard.Title className="mb-5">Active Vendors</StatCard.Title>
-        <StatCard.Value className="mb-4">{stats.activeVendors}</StatCard.Value>
-        <StatCard.Trend value="+12%" direction="up" period="vs last week" />
+        <div className="h-full flex flex-col">
+          <div className="min-h-12">
+            <StatCard.Title>Active Vendors</StatCard.Title>
+          </div>
+          <div className="min-h-14 flex items-center">
+            <StatCard.Value className="text-base md:text-lg lg:text-2xl">
+              {stats.activeVendors}
+            </StatCard.Value>
+          </div>
+          <div className="min-h-10 flex items-end">
+            <StatCard.Trend value="+12%" direction="up" period="vs last week" />
+          </div>
+        </div>
       </StatCard.Root>
     </div>
   );

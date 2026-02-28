@@ -24,7 +24,7 @@ export default function OrdersPage() {
     ordersData,
   } = useOrdersData();
 
-  // Simulate loading
+  // simulate loading
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);

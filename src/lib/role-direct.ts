@@ -1,16 +1,15 @@
-// lib/roleDirect.ts
 import { UserRole } from "@/types/auth";
 
 export function getDashboardRoute(role: UserRole) {
   switch (role) {
     case "WeechooAdmin":
-      return "/weechoo-admin"; // Note: this matches the folder name
+      return "/weechoo-admin";
     case "CompanyAdmin":
-      return "/company-admin"; // Note: this matches the folder name
+      return "/company-admin";
     case "Employee":
-      return "/employee"; // Note: this matches the folder name
+      return "/employee";
     case "Vendor":
-      return "/vendor"; // Note: this matches the folder name
+      return "/vendor";
     default:
       return "/login";
   }
