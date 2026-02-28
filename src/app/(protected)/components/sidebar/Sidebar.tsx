@@ -1,23 +1,35 @@
 "use client";
 
-import { SidebarItem } from "./SidebarItem";
 import Image from "next/image";
 import { weechooLogo } from "@/assets/images";
 import { useAuth } from "@/hooks/useAuth";
 import { usePathname } from "next/navigation";
 import { navigationConfig } from "@/constants/navigation";
+import { RoleConfig } from "@/types/navigation";
+import { SidebarItem } from "./sidebar-item";
 
-export const Sidebar = () => {
+export function Sidebar() {
   const { role } = useAuth();
   const pathname = usePathname();
 
-  // get nav config based on user role
-  const config = role ? navigationConfig[role] : navigationConfig.WeechooAdmin;
+  // get nav config based on user role; fall back if role invalid
+  let config: RoleConfig | undefined;
+  if (role && role in navigationConfig) {
+    config = navigationConfig[role];
+  } else {
+    // either no role yet or unrecognized; default to admin
+    config = navigationConfig.WeechooAdmin;
+  }
 
-  if (!config) return null;
+  if (!config) {
+    console.warn("No config found for role:", role);
+    return null;
+  }
+
+  console.log("Sidebar rendering with role:", role, "config:", config);
 
   return (
-    <aside className="hidden md:flex fixed left-0 top-0 h-screen w-64.5 bg-white border-r flex-col">
+    <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r flex-col flex">
       <div className="p-6 border-b flex items-center gap-6 shrink-0">
         <div className="shrink-0">
           <Image
@@ -62,4 +74,4 @@ export const Sidebar = () => {
       </div>
     </aside>
   );
-};
+}

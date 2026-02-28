@@ -1,4 +1,4 @@
-import { AppLogo } from "../common/AppLogo";
+import { AppLogo } from "../common/app-logo";
 
 export function AuthCard({ children }: { children: React.ReactNode }) {
   return (

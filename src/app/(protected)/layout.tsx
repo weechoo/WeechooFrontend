@@ -1,7 +1,7 @@
 "use client";
 
-import { TopNavbar } from "./components/navbar/TopNavbar";
-import { Sidebar } from "./components/sidebar/Sidebar";
+import { TopNavbar } from "./components/navbar/top-navbar";
+import { Sidebar } from "./components/sidebar/sidebar";
 
 export default function ProtectedLayout({
   children,

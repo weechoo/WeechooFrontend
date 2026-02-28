@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { allCompanies } from "@/constants/placeholder";
+import { allCompanies } from "@/constants/dashboard";
 
 export const CompaniesTable = () => {
   return (

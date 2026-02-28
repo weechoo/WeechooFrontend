@@ -1,13 +1,13 @@
 "use client";
 
-import { AuthButton } from "@/components/auth/AuthButton";
-import { AuthCard } from "@/components/auth/AuthCard";
-import { AuthError } from "@/components/auth/AuthError";
-import { OTPInput } from "@/components/auth/OTPInput";
-import { AppLogo } from "@/components/common/AppLogo";
-import { Heading } from "@/components/headings/Heading";
-import { SubHeading } from "@/components/headings/SubHeading";
-import { AuthLayout } from "@/components/layouts/AuthLayout";
+import { AuthButton } from "@/components/auth/auth-button";
+import { AuthCard } from "@/components/auth/auth-card";
+import { AuthError } from "@/components/auth/auth-error";
+import { OTPInput } from "@/components/auth/otp-input";
+import { AppLogo } from "@/components/common/app-logo";
+import { Heading } from "@/components/headings/heading";
+import { SubHeading } from "@/components/headings/sub-heading";
+import { AuthLayout } from "@/components/layouts/auth-layout";
 import React from "react";
 
 const OtpPage = () => {

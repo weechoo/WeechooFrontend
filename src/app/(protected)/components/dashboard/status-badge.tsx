@@ -4,7 +4,7 @@ interface StatusBadgeProps {
   status: OrderStatus;
 }
 
-export function StatusBadge({ status }: StatusBadgeProps) {
+export const StatusBadge = ({ status }: StatusBadgeProps) => {
   const base = "px-3 py-1 rounded-full text-xs font-medium";
 
   if (status === "Ready") {
@@ -24,4 +24,4 @@ export function StatusBadge({ status }: StatusBadgeProps) {
       Preparing
     </span>
   );
-}
+};

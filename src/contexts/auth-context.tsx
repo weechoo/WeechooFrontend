@@ -16,10 +16,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [role, setRole] = useState<UserRole | null>(() => {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("role") as UserRole | null;
+      let stored = localStorage.getItem("role");
+      // guard against literally "undefined" or "null" strings
+      if (stored === "undefined" || stored === "null") {
+        localStorage.removeItem("role");
+        stored = null;
+      }
+      if (stored) {
+        return stored as UserRole;
+      }
     }
     return null;
   });
+
+  // previously stored selected role, NO LONGER USED
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -29,11 +39,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   async function loginSuccess(token: string, role: UserRole) {
     setIsLoading(true);
+    console.log("loginSuccess called with", token, role);
     try {
       setToken(token);
       setRole(role);
       localStorage.setItem("token", token);
-      localStorage.setItem("role", role);
+      localStorage.setItem("role", String(role));
     } finally {
       setIsLoading(false);
     }

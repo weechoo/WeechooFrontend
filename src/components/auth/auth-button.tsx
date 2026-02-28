@@ -1,15 +1,15 @@
 "use client";
 
-import Loader from "../common/Loader";
+import Loader from "../common/loader";
 import { Button } from "../ui/button";
 
-export function AuthButton({
+export const AuthButton = ({
   children,
   loading,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
-}) {
+}) => {
   return (
     <Button
       {...props}
@@ -19,4 +19,4 @@ export function AuthButton({
       {loading ? <Loader size="sm" /> : children}
     </Button>
   );
-}
+};

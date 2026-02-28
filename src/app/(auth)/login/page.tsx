@@ -3,17 +3,16 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AuthLayout } from "@/components/layouts/AuthLayout";
-import { AuthCard } from "@/components/auth/AuthCard";
-import { AuthError } from "@/components/auth/AuthError";
-import { AuthButton } from "@/components/auth/AuthButton";
-import { Heading } from "@/components/headings/Heading";
-import { SubHeading } from "@/components/headings/SubHeading";
+import { AuthLayout } from "@/components/layouts/auth-layout";
+import { AuthCard } from "@/components/auth/auth-card";
+import { AuthError } from "@/components/auth/auth-error";
+import { AuthButton } from "@/components/auth/auth-button";
+import { SubHeading } from "@/components/headings/sub-heading";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
+import { Heading } from "@/components/headings/heading";
 
 const loginSchema = z.object({
-  role: z.string().min(1, "Select a role"),
   email: z.string().email("Enter a valid email"),
 });
 
@@ -26,9 +25,6 @@ const LoginPage = () => {
     formState: { errors, isSubmitting },
   } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
-    defaultValues: {
-      role: "WeechooAdmin",
-    },
   });
 
   const router = useRouter();
@@ -48,20 +44,6 @@ const LoginPage = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          <div>
-            <label className="text-sm">Role</label>
-            <select
-              {...register("role")}
-              className="w-full mt-1 p-3 md:p-4 text-primary-200 border rounded-md px-3 cursor-pointer"
-            >
-              <option value="WeechooAdmin">Admin</option>
-              <option value="CompanyAdmin">Company Admin</option>{" "}
-              <option value="Employee">Staff</option>
-              <option value="Vendor">Vendor</option>
-            </select>
-            {errors.role && <AuthError message={errors.role.message!} />}
-          </div>
-
           <div>
             <label className="text-sm">Email</label>
             <input

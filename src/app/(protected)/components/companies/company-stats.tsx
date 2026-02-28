@@ -1,5 +1,5 @@
-import { companyStats } from "@/constants/placeholder";
-import { StatCard } from "../dashboard/StatCard";
+import { companyStats } from "@/constants/dashboard";
+import { StatCard } from "../dashboard/stat-card";
 
 export const CompanyStats = () => {
   return (

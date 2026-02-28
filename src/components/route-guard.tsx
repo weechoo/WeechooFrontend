@@ -33,10 +33,15 @@ export function RouteGuard({ children }: { children: React.ReactNode }) {
 
     // RBAC
     if (role) {
-      const expectedPath = roleBasedRoutes[role];
+      const expectedPath =
+        roleBasedRoutes[role as keyof typeof roleBasedRoutes];
 
       // accessing wrong route
-      if (pathname !== expectedPath && !pathname.startsWith(expectedPath)) {
+      if (
+        expectedPath &&
+        pathname !== expectedPath &&
+        !pathname.startsWith(expectedPath)
+      ) {
         router.push(expectedPath);
       }
     }

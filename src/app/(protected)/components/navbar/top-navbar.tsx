@@ -3,7 +3,7 @@
 import { Bell, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { LogoutButton } from "@/components/auth/Logout";
+import { LogoutButton } from "@/components/auth/logout";
 import { useAuth } from "@/hooks/useAuth";
 import { Skeleton } from "@/components/ui/skeleton";
 

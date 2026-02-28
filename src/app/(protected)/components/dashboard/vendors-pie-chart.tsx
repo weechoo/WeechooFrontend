@@ -1,6 +1,6 @@
 "use client";
 
-import { chartData } from "@/constants/placeholder";
+import { chartData } from "@/constants/dashboard";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
 const COLORS = ["#FDCD8E", "#54433A", "#F97316", "#8D5C3F"];

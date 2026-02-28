@@ -1,6 +1,6 @@
-import { AppLogo } from "@/components/common/AppLogo";
-import { Heading } from "../headings/Heading";
-import { SubHeading } from "../headings/SubHeading";
+import { AppLogo } from "@/components/common/app-logo";
+import { Heading } from "../headings/heading";
+import { SubHeading } from "../headings/sub-heading";
 
 export function AuthHeader() {
   return (
