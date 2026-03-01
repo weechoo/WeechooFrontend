@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import EmptyState from "@/components/common/empty-state";
-import Loader from "@/components/common/loader";
+import Loader from "@/components/common/Loader";
 import { useOrdersData } from "@/hooks/useOrdersData";
 import { OrdersHeader } from "../../components/orders/orders-header";
 import { OrdersStatsCards } from "../../components/orders/orders-stats-cards";

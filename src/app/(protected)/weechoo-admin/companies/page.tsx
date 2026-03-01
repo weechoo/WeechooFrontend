@@ -6,7 +6,7 @@ import CompaniesTable from "../../components/companies/companies-table";
 import CompanyStats from "../../components/companies/company-stats";
 import AddCompanyModal from "@/components/modals/add-company-modal";
 import EmptyState from "@/components/common/empty-state";
-import Loader from "@/components/common/loader";
+import Loader from "@/components/common/Loader";
 import { allCompanies } from "@/constants/dashboard";
 
 export default function CompaniesPage() {

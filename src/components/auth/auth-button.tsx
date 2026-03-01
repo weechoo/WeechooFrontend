@@ -1,6 +1,6 @@
 "use client";
 
-import Loader from "../common/loader";
+import Loader from "../common/Loader";
 import { Button } from "../ui/button";
 
 export const AuthButton = ({
