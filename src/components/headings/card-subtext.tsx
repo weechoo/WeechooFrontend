@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { TextProps } from "@/types/texts";
 
-// card text
+// card text; currently not really in use
 
 export const CardSubtext = ({ children, className }: TextProps) => {
   return (
