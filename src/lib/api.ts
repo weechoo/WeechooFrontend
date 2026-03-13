@@ -6,34 +6,23 @@ export async function apiRequest<T>(
 ): Promise<T> {
   const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL!;
 
-  try {
-    const res = await fetch(`${BASE_URL}${endpoint}`, {
-      headers: {
-        "Content-Type": "application/json",
-        ...(options.headers || {}),
-      },
-      ...options,
-    });
+  const res = await fetch(`${BASE_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {}),
+    },
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (!res.ok) {
-      // throw custom error with status
-      throw new ApiRequestError(
-        data.message || "Request failed",
-        res.status,
-        data.code,
-      );
-    }
-
-    return data;
-  } catch (error) {
-    if (error instanceof ApiRequestError) {
-      throw error;
-    }
-    // re-throw as ApiRequestError for consistency
+  if (!res.ok) {
     throw new ApiRequestError(
-      error instanceof Error ? error.message : "Network error occurred",
+      data.message || "Request failed",
+      res.status,
+      data.code,
     );
   }
+
+  return data;
 }

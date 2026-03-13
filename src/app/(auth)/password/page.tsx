@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Add useEffect
 import { AuthButton } from "@/components/auth/auth-button";
 import { AuthCard } from "@/components/auth/auth-card";
 import { AuthError } from "@/components/auth/auth-error";
 import { Heading } from "@/components/headings/heading";
-import { SubHeading } from "@/components/headings/sub-heading";
 import { AuthLayout } from "@/components/layouts/auth-layout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -18,9 +17,10 @@ import { getDashboardRoute } from "@/lib/role-direct";
 import { toast } from "sonner";
 import { ApiRequestError } from "@/lib/errors";
 import { Eye, EyeOff } from "lucide-react";
+import { SkeletonLoader } from "@/components/common/skeleton-loader";
 
 const passwordSchema = z.object({
-  password: z.string().min(6, "Password is required"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 type PasswordForm = z.infer<typeof passwordSchema>;
@@ -47,57 +47,96 @@ const PasswordPage = () => {
   const { email, loginSuccess } = useAuth();
   const router = useRouter();
 
+  // handle redirect in useEffect instead of render
+  useEffect(() => {
+    if (!email) {
+      router.push("/login");
+    }
+  }, [email, router]);
+
+  // show loading state while checking/redirecting
   if (!email) {
-    router.push("/login");
-    return null;
+    return (
+      <AuthLayout>
+        <AuthCard>
+          <div className="flex flex-col items-center justify-center space-y-4">
+            <SkeletonLoader layout="auth" />
+          </div>
+        </AuthCard>
+      </AuthLayout>
+    );
   }
+
+  const isPhoneLogin = email.startsWith("phone:");
 
   async function onSubmit(data: PasswordForm) {
     try {
+      if (!email) {
+        setAuthError("Session expired. Please login again.");
+        router.push("/login");
+        return;
+      }
       setAuthError(null);
+
+      // prep login payload per identifier type
+      let loginPayload;
+      if (isPhoneLogin) {
+        const phone = email.replace("phone:", "");
+        loginPayload = {
+          phone,
+          password: data.password,
+        };
+      } else {
+        loginPayload = {
+          email,
+          password: data.password,
+        };
+      }
 
       const res = await apiRequest<LoginResponse>("/auth/login", {
         method: "POST",
-        body: JSON.stringify({
-          email,
-          password: data.password,
-        }),
+        body: JSON.stringify(loginPayload),
       });
 
-      // handle possible envelope response
-      const payload: LoginResponse =
-        typeof res === "object" &&
-        res !== null &&
-        "data" in res &&
-        typeof (res as { data?: unknown }).data === "object"
-          ? (res as { data: LoginResponse }).data
-          : res;
-
-      if (!payload.token || !payload.role) {
+      if (!res.success) {
         setAuthError("Login failed: invalid server response");
         return;
       }
 
-      // normalize role
-      const normalizedRole: UserRole | undefined = Array.isArray(payload.role)
-        ? payload.role[0]
-        : payload.role;
+      const { token, user, mustChangePassword } = res;
 
-      if (!normalizedRole || !validRoles.includes(normalizedRole)) {
+      if (!token || !user || !user.role) {
+        setAuthError("Login failed: invalid server response");
+        return;
+      }
+
+      // normalize role (if array or single)
+      const normalizedRole: UserRole = Array.isArray(user.role)
+        ? user.role[0]
+        : user.role;
+
+      if (!validRoles.includes(normalizedRole)) {
         setAuthError("Login failed: unexpected role returned");
         return;
       }
 
-      await loginSuccess(payload.token, normalizedRole);
+      await loginSuccess(token, normalizedRole, user, mustChangePassword);
 
       toast.success("Login successful!");
 
-      const dashboardRoute = getDashboardRoute(normalizedRole);
-      router.push(dashboardRoute);
+      // check mustChangePassword
+      if (mustChangePassword) {
+        router.push("/change-password");
+      } else {
+        const dashboardRoute = getDashboardRoute(normalizedRole);
+        router.push(dashboardRoute);
+      }
     } catch (error) {
       if (error instanceof ApiRequestError) {
-        if (error.status === 401) {
-          setAuthError("Invalid email or password. Please try again.");
+        if (error.status === 400) {
+          setAuthError("Email or phone is required");
+        } else if (error.status === 401) {
+          setAuthError("Invalid credentials. Please try again.");
         } else if (error.status === 429) {
           setAuthError("Too many attempts. Please try again later.");
         } else if (error.status && error.status >= 500) {
@@ -118,34 +157,37 @@ const PasswordPage = () => {
       <AuthCard>
         <div className="flex flex-col items-center justify-center">
           <Heading>Security access</Heading>
-          <SubHeading>Enter your password</SubHeading>
         </div>
 
         {authError && <AuthError message={authError} />}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="relative">
-            <label className="text-sm font-medium text-neutral-200">
+            <label className="text-sm font-medium text-gray-700">
               Password
             </label>
 
             <input
               {...register("password")}
               type={showPassword ? "text" : "password"}
-              className="w-full mt-1 p-3 md:p-4 border rounded-md px-3 pr-12 placeholder:text-neutral-200"
-              placeholder="************"
+              className="w-full mt-1 p-3 md:p-4 border rounded-md px-3 pr-12 focus:ring-2 focus:ring-orange-200 focus:border-orange-400 outline-none"
+              placeholder="Enter your password"
+              disabled={isSubmitting}
             />
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
               aria-label={showPassword ? "Hide password" : "Show password"}
-              className="absolute right-3 top-10.5 text-neutral-400 hover:text-neutral-200"
+              className="absolute right-3 top-10 text-gray-400 hover:text-gray-600"
+              disabled={isSubmitting}
             >
               {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
 
             {errors.password && (
-              <AuthError message={errors.password.message ?? ""} />
+              <p className="text-sm text-red-500 mt-1">
+                {errors.password.message}
+              </p>
             )}
           </div>
 

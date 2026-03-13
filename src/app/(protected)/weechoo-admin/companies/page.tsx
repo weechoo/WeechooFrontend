@@ -8,6 +8,7 @@ import AddCompanyModal from "@/components/modals/add-company-modal";
 import EmptyState from "@/components/common/empty-state";
 import Loader from "@/components/common/loader";
 import { allCompanies } from "@/constants/dashboard";
+import { SkeletonLoader } from "@/components/common/skeleton-loader";
 
 export default function CompaniesPage() {
   const [open, setOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function CompaniesPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-100">
-        <Loader size="lg" />
+        <SkeletonLoader layout="dashboard" />
       </div>
     );
   }

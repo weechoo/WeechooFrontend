@@ -13,30 +13,45 @@ const roleBasedRoutes = {
 };
 
 export function RouteGuard({ children }: { children: React.ReactNode }) {
-  const { token, role } = useAuth();
+  const { token, role, mustChangePassword, isLoading } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
-    // if the route is public
+    if (isLoading) return;
+
     if (publicRoutes.includes(pathname)) {
-      // if token exists redirect to dashboard
       if (token && role && pathname !== "/password") {
-        router.push(roleBasedRoutes[role]);
+        if (mustChangePassword) {
+          router.push("/change-password");
+        } else {
+          router.push(roleBasedRoutes[role]);
+        }
       }
       return;
     }
+
     if (!token) {
       router.push("/login");
       return;
     }
 
-    // RBAC
+    if (pathname === "/change-password") {
+      if (!mustChangePassword) {
+        router.push(roleBasedRoutes[role as keyof typeof roleBasedRoutes]);
+      }
+      return;
+    }
+
     if (role) {
+      if (mustChangePassword) {
+        router.push("/change-password");
+        return;
+      }
+
       const expectedPath =
         roleBasedRoutes[role as keyof typeof roleBasedRoutes];
 
-      // accessing wrong route
       if (
         expectedPath &&
         pathname !== expectedPath &&
@@ -45,9 +60,8 @@ export function RouteGuard({ children }: { children: React.ReactNode }) {
         router.push(expectedPath);
       }
     }
-  }, [token, role, pathname, router]);
+  }, [token, role, mustChangePassword, pathname, router, isLoading]);
 
-  // show nothing while checking auth
   if (!token && !publicRoutes.includes(pathname)) {
     return null;
   }
