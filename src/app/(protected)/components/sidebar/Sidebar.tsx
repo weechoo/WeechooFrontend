@@ -26,7 +26,7 @@ export function Sidebar() {
     return null;
   }
 
-  console.log("Sidebar rendering with role:", role, "config:", config);
+  // console.log("Sidebar rendering with role:", role, "config:", config);
 
   return (
     <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r flex-col flex">

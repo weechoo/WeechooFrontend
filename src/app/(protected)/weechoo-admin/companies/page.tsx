@@ -6,8 +6,8 @@ import CompaniesTable from "../../components/companies/companies-table";
 import CompanyStats from "../../components/companies/company-stats";
 import AddCompanyModal from "@/components/modals/add-company-modal";
 import EmptyState from "@/components/common/empty-state";
-import Loader from "@/components/common/loader";
 import { allCompanies } from "@/constants/dashboard";
+import { SkeletonLoader } from "@/components/common/skeleton-loader";
 
 export default function CompaniesPage() {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,7 @@ export default function CompaniesPage() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-100">
-        <Loader size="lg" />
+        <SkeletonLoader layout="dashboard" />
       </div>
     );
   }
@@ -37,7 +37,7 @@ export default function CompaniesPage() {
         <div>
           <h2 className="text-2xl font-bold text-neutral-black">Companies</h2>
           <p className="text-neutral-100 text-sm font-normal">
-            Manage registered companies
+            Manage all registered companies
           </p>
         </div>
 
