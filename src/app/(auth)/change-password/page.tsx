@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -49,10 +49,21 @@ const ChangePasswordPage = () => {
   });
 
   const router = useRouter();
-  const { token, user, refreshToken, mustChangePassword } = useAuth();
+  const {
+    token,
+    user,
+    refreshToken,
+    mustChangePassword,
+    setMustChangePassword,
+  } = useAuth();
+
+  useEffect(() => {
+    if (!token || !user) {
+      router.push("/login");
+    }
+  }, [token, user, router]);
 
   if (!token || !user) {
-    router.push("/login");
     return null;
   }
 
@@ -65,6 +76,11 @@ const ChangePasswordPage = () => {
 
   async function onSubmit(data: ChangePasswordForm) {
     if (!token || !user) return;
+
+    if (data.currentPassword === data.newPassword) {
+      toast.error("New password cannot be the same as current password");
+      return;
+    }
 
     try {
       setAuthError(null);
@@ -87,7 +103,10 @@ const ChangePasswordPage = () => {
       if (response.success) {
         toast.success("Password changed successfully!");
 
-        // refresh token to update mustChangePassword flag
+        // update local state first so RouteGuard allows navigation
+        setMustChangePassword(false);
+
+        // refresh token
         await refreshToken();
 
         const dashboardRoute = getDashboardRoute(user.role);
@@ -126,9 +145,6 @@ const ChangePasswordPage = () => {
               ? "You're using a temporary password. Please set a new one."
               : "Update your password"}
           </SubHeading>
-          <p className="text-sm text-gray-500 mt-2">
-            Logged in as: {user.name} ({user.email})
-          </p>
         </div>
 
         {authError && <AuthError message={authError} />}
@@ -233,27 +249,6 @@ const ChangePasswordPage = () => {
                 {errors.confirmPassword.message}
               </p>
             )}
-          </div>
-
-          {/* summary */}
-          <div className="bg-gray-50 p-3 rounded-md border border-gray-200">
-            <p className="text-xs font-medium text-gray-700 mb-2">
-              Password requirements:
-            </p>
-            <ul className="text-xs text-gray-600 space-y-1">
-              <li className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                Minimum 6 characters
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                New password must be different from current
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                Passwords must match
-              </li>
-            </ul>
           </div>
 
           <AuthButton type="submit" loading={isSubmitting}>

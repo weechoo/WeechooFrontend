@@ -99,7 +99,7 @@ const LoginPage = () => {
               {...register("identifier")}
               type="text"
               className="w-full mt-1 p-3 md:p-4 border rounded-md placeholder:text-gray-400 focus:ring-2 focus:ring-orange-200 focus:border-orange-400 outline-none"
-              placeholder="you@example.com or 0551234567"
+              placeholder="you@example.com or 0541111111"
             />
           </div>
 

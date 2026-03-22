@@ -16,11 +16,11 @@ export async function apiRequest<T>(
 
   const data = await res.json();
 
-  if (!res.ok) {
+  if (!res.ok || data?.success === false) {
     throw new ApiRequestError(
-      data.message || "Request failed",
+      data?.error?.message || data?.message || "Request failed",
       res.status,
-      data.code,
+      data?.error?.code || data?.code,
     );
   }
 
