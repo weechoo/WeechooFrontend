@@ -15,13 +15,10 @@ import { handleApiError } from "@/lib/errors";
 
 const companySchema = z.object({
   name: z.string().min(2, "Company name is required"),
-  email: z.string().email("Invalid email"),
-  phone: z.string().min(7, "Phone number is required"),
+  adminName: z.string().min(2, "Admin name is required"),
   address: z.string().min(3, "Address is required"),
-  employeeCount: z
-    .number()
-    .int("Employee count must be a whole number")
-    .min(1, "Employee count must be greater than 0"),
+  adminEmail: z.string().email("Invalid email"),
+  adminPhone: z.string().min(7, "Phone number is required"),
 });
 
 type CompanyFormValues = z.infer<typeof companySchema>;
@@ -53,10 +50,7 @@ export default function AddCompanyModal({
 
       const payload = {
         ...data,
-        employeeCount: Number(data.employeeCount),
       };
-
-      console.log("PAYLOAD SENT:", payload);
 
       await createCompany(payload);
 
@@ -100,33 +94,47 @@ export default function AddCompanyModal({
           )}
         </div>
 
+        <div className="space-y-2">
+          <Label className="text-xs font-medium text-neutral-black">
+            Admin Name
+          </Label>
+          <Input
+            placeholder="E.g. John Doe"
+            className="rounded-xl py-5"
+            {...register("adminName")}
+          />
+          {errors.adminName && (
+            <p className="text-xs text-red-500">{errors.adminName.message}</p>
+          )}
+        </div>
+
         {/* Email */}
         <div className="space-y-2">
           <Label className="text-xs font-medium text-neutral-black">
-            Email
+            Admin Email
           </Label>
           <Input
             placeholder="hr@company.com"
             className="rounded-xl py-5"
-            {...register("email")}
+            {...register("adminEmail")}
           />
-          {errors.email && (
-            <p className="text-xs text-red-500">{errors.email.message}</p>
+          {errors.adminEmail && (
+            <p className="text-xs text-red-500">{errors.adminEmail.message}</p>
           )}
         </div>
 
         {/* Phone */}
         <div className="space-y-2">
           <Label className="text-xs font-medium text-neutral-black">
-            Phone Number
+            Admin Phone Number
           </Label>
           <Input
             placeholder="0201234567"
             className="rounded-xl py-5"
-            {...register("phone")}
+            {...register("adminPhone")}
           />
-          {errors.phone && (
-            <p className="text-xs text-red-500">{errors.phone.message}</p>
+          {errors.adminPhone && (
+            <p className="text-xs text-red-500">{errors.adminPhone.message}</p>
           )}
         </div>
 
@@ -142,24 +150,6 @@ export default function AddCompanyModal({
           />
           {errors.address && (
             <p className="text-xs text-red-500">{errors.address.message}</p>
-          )}
-        </div>
-
-        {/* Employee Count */}
-        <div className="space-y-2">
-          <Label className="text-xs font-medium text-neutral-black">
-            Employee Count
-          </Label>
-          <Input
-            type="number"
-            placeholder="50"
-            className="rounded-xl py-5"
-            {...register("employeeCount", { valueAsNumber: true })}
-          />
-          {errors.employeeCount && (
-            <p className="text-xs text-red-500">
-              {errors.employeeCount.message}
-            </p>
           )}
         </div>
 

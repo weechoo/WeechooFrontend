@@ -1,18 +1,19 @@
 export interface CreateCompanyRequest {
   name: string;
-  email: string;
-  phone: string;
+  adminName: string;
+  adminEmail: string;
+  adminPhone: string;
   address: string;
-  employeeCount: number;
 }
 
 export interface Company {
   id: string;
   name: string;
-  email: string;
-  phone: string;
+  adminName: string;
+  adminEmail: string;
+  adminPhone: string;
   address: string;
-  employeeCount: number;
+
   createdAt: string;
 }
 
