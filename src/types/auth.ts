@@ -33,6 +33,7 @@ export interface AuthContextType {
   isLoading: boolean;
   mustChangePassword: boolean;
   setEmail: (email: string) => void;
+  setMustChangePassword: (mustChangePassword: boolean) => void;
   loginSuccess: (
     token: string,
     role: UserRole,

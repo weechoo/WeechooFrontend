@@ -1,13 +1,17 @@
 "use client";
 
-import { Bell, Search } from "lucide-react";
+import { Bell, Search, Menu } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { LogoutButton } from "@/components/auth/logout";
 import { useAuth } from "@/hooks/useAuth";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export function TopNavbar() {
+interface TopNavbarProps {
+  onMenuClick?: () => void;
+}
+
+export function TopNavbar({ onMenuClick }: TopNavbarProps) {
   const { role, isLoading } = useAuth();
 
   const getInitials = () => {
@@ -42,9 +46,20 @@ export function TopNavbar() {
 
   return (
     <div className="h-16 bg-white border-b px-4 md:px-6 flex items-center justify-between">
-      <div className="relative w-61.5 max-w-xs">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-        <Input placeholder="Search" className="pl-9 h-9 w-full text-sm" />
+      <div className="flex items-center gap-3">
+        {onMenuClick && (
+          <button
+            className="md:hidden p-2 -ml-2 text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
+            onClick={onMenuClick}
+            aria-label="Open Menu"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        )}
+        <div className="relative w-61.5 max-w-xs hidden md:block">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <Input placeholder="Search" className="pl-9 h-9 w-full text-sm" />
+        </div>
       </div>
 
       <div className="flex items-center gap-5 md:gap-7 ml-4">

@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import Loader from "@/components/common/loader";
 import { useCompanyService } from "@/hooks/use-company-service";
 import { handleApiError } from "@/lib/errors";
+import { useAuth } from "@/hooks/useAuth";
 
 const companySchema = z.object({
   name: z.string().min(2, "Company name is required"),
@@ -34,6 +35,7 @@ export default function AddCompanyModal({
 }: AddCompanyModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { createCompany } = useCompanyService();
+  const { logout } = useAuth();
 
   const {
     register,
@@ -63,6 +65,14 @@ export default function AddCompanyModal({
     } catch (error) {
       const apiError = handleApiError(error);
 
+      if (apiError.code === "TOKEN_EXPIRED") {
+        toast.error("Session expired", {
+          description: "Please log in again.",
+        });
+        logout();
+        return;
+      }
+
       toast.error("Company creation failed", {
         description: apiError.message,
       });
@@ -79,7 +89,7 @@ export default function AddCompanyModal({
       description="Create a new company account"
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Company Name */}
+        {/* company Name */}
         <div className="space-y-2">
           <Label className="text-xs font-medium text-neutral-black">
             Company Name
@@ -108,7 +118,7 @@ export default function AddCompanyModal({
           )}
         </div>
 
-        {/* Email */}
+        {/* admin email */}
         <div className="space-y-2">
           <Label className="text-xs font-medium text-neutral-black">
             Admin Email
@@ -123,7 +133,7 @@ export default function AddCompanyModal({
           )}
         </div>
 
-        {/* Phone */}
+        {/* admin phone */}
         <div className="space-y-2">
           <Label className="text-xs font-medium text-neutral-black">
             Admin Phone Number
@@ -138,7 +148,7 @@ export default function AddCompanyModal({
           )}
         </div>
 
-        {/* Address */}
+        {/* address */}
         <div className="space-y-2">
           <Label className="text-xs font-medium text-neutral-black">
             Address
@@ -153,7 +163,7 @@ export default function AddCompanyModal({
           )}
         </div>
 
-        {/* Buttons */}
+        {/* buttons */}
         <div className="flex justify-end gap-3 pt-6">
           <Button
             type="button"

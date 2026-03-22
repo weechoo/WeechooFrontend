@@ -125,6 +125,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setEmailState(email);
   }
 
+  function updateMustChangePassword(value: boolean) {
+    setMustChangePassword(value);
+    localStorage.setItem("mustChangePassword", String(value));
+  }
+
   async function loginSuccess(
     token: string,
     role: UserRole,
@@ -158,6 +163,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         isLoading,
         mustChangePassword,
         setEmail,
+        setMustChangePassword: updateMustChangePassword,
         loginSuccess,
         logout,
         refreshToken,
