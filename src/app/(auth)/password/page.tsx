@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"; // Add useEffect
 import { AuthButton } from "@/components/auth/auth-button";
 import { AuthCard } from "@/components/auth/auth-card";
 import { AuthError } from "@/components/auth/auth-error";
-import { Heading } from "@/components/headings/heading";
 import { AuthLayout } from "@/components/layouts/auth-layout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -18,6 +17,7 @@ import { toast } from "sonner";
 import { ApiRequestError } from "@/lib/errors";
 import { Eye, EyeOff } from "lucide-react";
 import { SkeletonLoader } from "@/components/common/skeleton-loader";
+import { Heading } from "@/components/headings/heading";
 
 const passwordSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
