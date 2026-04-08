@@ -86,7 +86,7 @@ export default function AddCompanyModal({
       open={open}
       onOpenChange={onOpenChange}
       title="Onboard New Company"
-      description="Create a new company account"
+      description="Create a new company"
     >
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* company Name */}
