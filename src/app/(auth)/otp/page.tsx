@@ -4,7 +4,6 @@ import { AuthButton } from "@/components/auth/auth-button";
 import { AuthCard } from "@/components/auth/auth-card";
 import { AuthError } from "@/components/auth/auth-error";
 import { OTPInput } from "@/components/auth/otp-input";
-import { AppLogo } from "@/components/common/app-logo";
 import { Heading } from "@/components/headings/heading";
 import { SubHeading } from "@/components/headings/sub-heading";
 import { AuthLayout } from "@/components/layouts/auth-layout";

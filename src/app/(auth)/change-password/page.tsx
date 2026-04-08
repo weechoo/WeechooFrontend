@@ -12,12 +12,12 @@ import { AuthLayout } from "@/components/layouts/auth-layout";
 import { AuthCard } from "@/components/auth/auth-card";
 import { AuthButton } from "@/components/auth/auth-button";
 import { AuthError } from "@/components/auth/auth-error";
-import { Heading } from "@/components/headings/heading";
 import { SubHeading } from "@/components/headings/sub-heading";
 import { useAuth } from "@/hooks/useAuth";
 import { apiRequest } from "@/lib/api";
 import { ApiRequestError } from "@/lib/errors";
 import { getDashboardRoute } from "@/lib/role-direct";
+import { Heading } from "@/components/headings/heading";
 
 const changePasswordSchema = z
   .object({

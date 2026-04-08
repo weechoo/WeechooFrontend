@@ -3,9 +3,9 @@
 import { Bell, Search, Menu } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { LogoutButton } from "@/components/auth/logout";
 import { useAuth } from "@/hooks/useAuth";
 import { Skeleton } from "@/components/ui/skeleton";
+import { LogoutButton } from "@/components/auth/logout";
 
 interface TopNavbarProps {
   onMenuClick?: () => void;
